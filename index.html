@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+  <title>Acid widget</title>
+  <link rel="stylesheet" href="src/style/acid.css" type="text/css">
+  <link rel="stylesheet" href="src/style/timeline.css" type="text/css">
+  <script src="src/js/acid.js"></script>
+  <script src="src/js/timeline.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <img id="stateDisplay" src="src/img/start.png" alt="">
+  <video id="player" src=""></video>
+  <svg width="640" height="360" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <path class="addButton" data-component="acid" d="m175.90927,94.54556l0.00001,11.13637l-4.77273,1.13637l-10.00002,10.22728l0.45455,20.22729l1.81818,3.63637l1.59092,31.59094l0.22727,35.45459l-0.68182,2.72727l-0.45455,12.27274l7.50001,12.27274l40.00004,-1.36364c0.22727,0.00001 2.5,-3.86363 2.5,-3.86363c0,0 -0.22728,-15.00002 -0.45454,-15.00002c0.22726,0 -2.04546,-2.95455 -2.27273,-2.95455c0.22727,0 0.22727,-34.77276 0,-34.77276c0.22727,0 -1.13637,-34.77277 -1.36364,-34.77277c0.22727,0 2.27272,-3.40909 2.04546,-3.40909c0.22726,0 -0.9091,-17.72729 -1.13637,-17.72729c0.22727,0 -2.04546,-4.54546 -2.27272,-4.54546c0.22726,0 -12.7273,-11.13638 -12.7273,-11.13638c0,0 -1.59091,-1.81818 -1.81817,-1.81818c0.22726,0 0.45453,-8.18183 0.22727,-8.18183c0.22726,0 -1.13638,-1.59091 -1.36364,-1.59091c0.22726,0 -13.86366,-0.22727 -14.09092,-0.22727c0.22726,0 -2.27274,-0.45455 -2.95456,0.68182z" fill-opacity="null" stroke-opacity="null" stroke-dasharray="5,5" stroke-width="0.5" stroke="#DDDDDD" fill="none"/>
+      <path id="baker" d="m276.66627,144.81461l4.81482,63.14806l1.48148,13.88887l6.29629,3.7037l12.59257,2.96296l12.40739,-0.37037l12.59258,-1.85185l10.37035,-3.51851c0.18518,0 1.11111,-5.37036 1.11111,-5.37036c0,0 1.66666,-31.29626 1.48148,-31.29626c0.18518,0 2.77777,-31.11106 2.59259,-31.11107c0.18518,0.00001 1.29629,-10.55554 1.11111,-10.55554c0.18518,0 -2.22223,-2.59258 -2.4074,-2.59259c0.18517,0.00001 -9.25926,-2.77777 -9.44444,-2.77777c0.18518,0 -14.99998,-1.11111 -14.99998,-1.11111c0,0 -18.14812,0.18519 -18.3333,0.18519c0.18518,0 -13.14814,1.66666 -13.14814,1.66666c0,0 -4.99999,1.48148 -5.18517,1.48148c0.18518,0 -1.69932,1.37008 -3.33334,3.51851z" fill-opacity="null" stroke-dasharray="5,5" stroke-width="0.5" stroke="#DDDDDD" fill="none"/>
+      <path class="addButton" data-component="soda" d="m401.03099,125.97939l-2.06185,82.88662l12.57732,8.04124l62.47423,-5.7732l2.26805,-83.0928c0,0.20619 -11.75258,-5.97938 -11.75258,-5.97938c-0.41237,0.41237 -40.61857,2.26804 -63.50517,3.91752z" fill-opacity="null" stroke-opacity="null" stroke-dasharray="5,5" stroke-width="0.5" stroke="#DDDDDD" fill="none"/>
+    </g>
+  </svg>
+  <input id="reload" type="button" onclick="window.location.reload()" value="Reload" />
+</div>
+</body>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('src/js/service-worker.js');
+  }
+</script>
+</html>
