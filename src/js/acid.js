@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   let state = "empty";  // empty | soda | acid | final
+  const popup = document.getElementById("timeline-wrapper");
+  const player = document.getElementById("player");
+  const previewImg = document.getElementById("previewImg");
+  const controls = document.getElementsByClassName("addButton");
+  let pause;
   const videoList = [
     "src/video/emptyAddSoda.mp4",
     "src/video/emptyAddAcid.mp4",
@@ -20,18 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     final: videoList[4]
   };
-
-  caches.open("video").then((cache) => {
-    videoList.forEach((video) => {
-      fetch(video).then((response) => {
-        cache.put(video, response).then(() => {});
-      })
-    });
-  })
-
-
-  const player = document.getElementById("player");
-  const controls = document.getElementsByClassName("addButton");
+  const imageMap = {
+    soda: "src/img/soda.png",
+    acid: "src/img/acid.png",
+    final: "src/img/final.png"
+  }
 
   const displayControls = (show) => {
     for (let control of controls) {
@@ -41,6 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   player.onended = function () {
     displayControls(true);
+    previewImg.src = imageMap[state];
+
     if (state === "final") {
       document.getElementById("baker")
         .style.display = "block";
@@ -65,13 +65,34 @@ document.addEventListener("DOMContentLoaded", () => {
       state = component;
     } else {
       state = "final";
-      this.onended = () => {
-
-      };
     }
   }
 
   for (let control of controls) {
     control.addEventListener("click", addHandler);
   }
+
+  document.getElementById("baker").addEventListener("click", () => {
+    document.getElementById("timeline").innerHTML = "";
+    popup.classList.add("opened");
+
+    const { playerPause } = timeline({
+      containerId: "timeline",
+      framesFolder: "src/img/INT3D-36",
+      fps: 15,
+      framesCount: 750,
+      firstFrameName: "INT3D-36.0000.jpg",
+      periods: []
+    });
+
+    pause = playerPause;
+  });
+
+  document.getElementById("closeButton").addEventListener("click", () => {
+    if (popup.classList.contains("opened")) {
+      pause();
+      popup.classList.remove("opened");
+      document.getElementById("timeline").innerHTML = "";
+    }
+  });
 });
